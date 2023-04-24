@@ -9,8 +9,8 @@ on:
     - cron: 1 17 * * 4
 
 # 点赞☆Star触发编译
-#  watch:
-#    types: [started]
+  watch:
+   types: [started]
 
 jobs:
   Build_x86_61:
