@@ -128,26 +128,3 @@ jobs:
       with:
         name: x86-6.1-config
         path: openwrt/.config
-        
-    - name: Upload Packages
-      uses: actions/upload-artifact@main
-      with:
-        name: X86-Packages
-        path: openwrt/bin/packages
-        
-    - name: Generate Tag & Release Name
-      id: generate_name
-      run: |
-        time=$(date +%Y%m%d%H%M)
-        release_tag="$time"
-        release_name="软路由(X86_64)全能版-OpenWrt-6.1内核-$(date +%Y%m%d)"
-        echo "release_name=$release_name" >> $GITHUB_OUTPUT
-        echo "release_tag=$release_tag" >> $GITHUB_OUTPUT       
-
-    - name: Create Release & Upload
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: X86_Out/*.* 
-        name: ${{ steps.generate_name.outputs.release_name }}
-        tag: ${{ steps.generate_name.outputs.release_tag }}
-        token: ${{ secrets.GITHUB_TOKEN }}
