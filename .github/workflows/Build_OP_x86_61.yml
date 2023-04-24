@@ -101,12 +101,27 @@ jobs:
         getmd5 $rom
         
         cp -a $rom ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.img.gz
+        
+        rom_vmdk=openwrt/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.vmdk
+        getmd5 $rom_vmdk
+        
+        cp -a $rom_vmdk ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.vmdk
+        
+        rom_pve=openwrt/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.qcow2
+        getmd5 $rom_pve
+        
+        cp -a $rom_pve ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.qcow2
+        
+        rom_rootfs=openwrt/bin/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz
+        getmd5 $rom_rootfs
+        
+        cp -a $rom_pve ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.tar.gz
                
     - name: Upload Firmwares
       uses: actions/upload-artifact@main
       with:
         name: X86-OpenWrt-6.1
-        path: X86_Out/*.img.gz
+        path: X86_Out/*.*
 
     - name: Upload config
       uses: actions/upload-artifact@main
