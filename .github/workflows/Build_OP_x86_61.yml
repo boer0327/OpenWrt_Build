@@ -115,7 +115,7 @@ jobs:
         rom_rootfs=openwrt/bin/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz
         getmd5 $rom_rootfs
         
-        cp -a $rom_pve ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.tar.gz
+        cp -a $rom_rootfs ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.tar.gz
                
     - name: Upload Firmwares
       uses: actions/upload-artifact@main
