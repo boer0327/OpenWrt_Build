@@ -102,11 +102,6 @@ jobs:
         
         cp -a $rom ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.img.gz
         
-        rom_vmdk=openwrt/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.vmdk
-        getmd5 $rom_vmdk
-        
-        cp -a $rom_vmdk ./X86_Out/X86Wrt-X86_64-Full-6.1-$(date +%Y%m%d)_${md5}.vmdk
-        
         rom_pve=openwrt/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.qcow2
         getmd5 $rom_pve
         
@@ -122,9 +117,3 @@ jobs:
       with:
         name: X86-OpenWrt-6.1
         path: X86_Out/*.*
-
-    - name: Upload config
-      uses: actions/upload-artifact@main
-      with:
-        name: x86-6.1-config
-        path: openwrt/.config
